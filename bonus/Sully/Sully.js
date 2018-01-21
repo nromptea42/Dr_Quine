@@ -8,7 +8,14 @@ function quine() {
 		return (0);
 	if (fs.existsSync("Sully_" + i + ".js"))
 		i--;
-	fs.writeFileSync("Sully_" + i + ".js", "const fs = require('fs');\nconst cp = require('child_process');\n\nlet i = " + i + ";\n\n" + quine.toString() + "\nquine();");
-	cp.execSync("node Sully_" + i + ".js");
+	try {
+		if (fs.existsSync("Sully_" + i + ".js")) {
+			fs.accessSync("Sully_" + i + ".js", fs.constants.W_OK);
+		}
+		fs.writeFileSync("Sully_" + i + ".js", "const fs = require('fs');\nconst cp = require('child_process');\n\nlet i = " + i + ";\n\n" + quine.toString() + "\nquine();");
+		cp.execSync("node Sully_" + i + ".js");
+	} catch (err) {
+		console.log("no access Sully_" + i + ".js");
+	}
 }
 quine();
