@@ -1,6 +1,10 @@
 var fs = require('fs');
-// comment
+/*
+	comment
+*/
 const A = 'a';
 const B = 'b';
-const T = function foo() {fs.writeFileSync("Grace_kid.js", "var fs = require('fs');\n// comment\nconst A = 'a';\nconst B = 'b';\nconst T = " + foo.toString() + "\nT();");}
+const T = function foo() {
+	fs.writeFileSync("Grace_kid.js", "var fs = require('fs');\n/*\n\tcomment\n*/\nconst A = 'a';\nconst B = 'b';\nconst T = " + foo.toString() + "\nT();");
+}
 T();

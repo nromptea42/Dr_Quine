@@ -1,14 +1,14 @@
 /*
-  outside
+  comment
 */
 function foo() {
-return 1
+	return;
 }
 function main() {
 /*
-  inside
+  comment 2
 */
-foo();
-return ("/*\n  outside\n*/\n" + foo.toString() +"\n" + main.toString() + "\nconsole.log(main());")
+	foo();
+	console.log("/*\n  comment\n*/\n" + foo.toString() +"\n" + main.toString() + "\nmain();")
 }
-console.log(main());
+main();
